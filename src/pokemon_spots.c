@@ -123,10 +123,10 @@ static const struct MonSpotTemplate* GetSpeciesSpots(enum Species species)
 {
     switch (species)
     {
-        case SPECIES_SPINDA:
+    case SPECIES_SPINDA: 
             return &gSpindaSpotTemplate;
-        default:
-            return NULL;
+    default:
+        return NULL;
     }
 }
 
@@ -154,15 +154,15 @@ static inline u32 GetSpotRow(const u32* image, u32 row, enum SpotScale scale)
 {
     switch (scale)
     {
-        case SCALE_1:
-            return (image[row / 4] >> ((row % 4) * 8)) & 0xFF;
-        case SCALE_2:
-            return (image[row / 2] >> ((row % 2) * 16)) & 0xFFFF;
-        case SCALE_4:
-            return image[row];
-        default:
-            errorf("scale %d not in enum SpotScale", scale);
-            return 0;
+    case SCALE_1:
+        return (image[row / 4] >> ((row % 4) * 8)) & 0xFF;
+    case SCALE_2:
+        return (image[row / 2] >> ((row % 2) * 16)) & 0xFFFF;
+    case SCALE_4:
+        return image[row];
+    default:
+        errorf("scale %d not in enum SpotScale", scale);
+        return 0;
     }
 }
 
@@ -184,18 +184,18 @@ static void DrawPokemonSpots(u32 personality, const struct MonSpotTemplate* spot
 
         switch (spotAnimFrame)
         {
-            case FRAME_1:
-                x -= size / 2;
-                y -= size / 2;
-                break;
+        case FRAME_1:
+            x -= size / 2;
+            y -= size / 2;
+            break;
 
-            case FRAME_2:
-                x += spotTemplate->xOffsetFrame2 - size / 2;
-                y += FRAME_SIZE + spotTemplate->yOffsetFrame2 - size / 2;
-                break;
+        case FRAME_2:
+            x += spotTemplate->xOffsetFrame2 - size / 2;
+            y += FRAME_SIZE + spotTemplate->yOffsetFrame2 - size / 2;
+            break;
 
-            default:
-                break;
+        default:
+            break;
         }
 
         // INFO: This loop draws the spot
